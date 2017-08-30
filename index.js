@@ -16,6 +16,7 @@ module.exports = {
   targetCssFile: 'site.min.css',
   targetJsFile: 'site.js',
   targetJsMinFile: 'site.min.js',
+  resetCss:true,
   run: function () {
     /*
 	Configuration
@@ -23,7 +24,7 @@ module.exports = {
       "use strict";
       // Sass
       let sassCompileComplete = new Promise((resolve, reject) => {
-        sass.run(resolve, module.exports.sassPath, module.exports.targetCssPath, module.exports.targetSassFile);
+        sass.run(resolve, module.exports.sassPath, module.exports.targetCssPath, module.exports.targetSassFile, module.exports.resetCss);
       });
 
       sassCompileComplete.then((successMessage) => {
