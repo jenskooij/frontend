@@ -1,0 +1,35 @@
+{
+  "name": "Frontend",
+  "version": "1.0.0",
+  "description": "A boilerplate frontend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch scss --watch js --watch build -e js,scss index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenskooij/frontend.git"
+  },
+  "engines": {
+    "node": ">=4.0.4"
+  },
+  "keywords": [
+    "Frontengine"
+  ],
+  "author": "Jens Kooij <jens.kooij@incentro.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jenskooij/frontend/issues"
+  },
+  "homepage": "https://github.com/jenskooij/frontend#readme",
+  "dependencies": {
+    "node-sass": "^4.5.3",
+    "file-system": "^2.2.2",
+    "clean-css": "^4.1.5",
+    "reset-css": "^2.2.1",
+    "nodemon": "^1.11.0",
+    "uglify-js": "^3.0",
+    "jshint": "^2.9",
+    "colors": "^1.1"
+  }
+}
