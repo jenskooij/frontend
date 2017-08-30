@@ -10,7 +10,8 @@ const jsMinify = require('./build/jsMinify');
 module.exports = {
   sassPath: 'scss',
   jsPath: 'js',
-  targetPath: 'target',
+  targetJsPath: 'target',
+  targetCssPath: 'target',
   targetSassFile: 'site.css',
   targetCssFile: 'site.min.css',
   targetJsFile: 'site.js',
@@ -22,7 +23,7 @@ module.exports = {
       "use strict";
       // Sass
       let sassCompileComplete = new Promise((resolve, reject) => {
-        sass.run(resolve, module.exports.sassPath, module.exports.targetPath, module.exports.targetSassFile);
+        sass.run(resolve, module.exports.sassPath, module.exports.targetCssPath, module.exports.targetSassFile);
       });
 
       sassCompileComplete.then((successMessage) => {
@@ -30,7 +31,7 @@ module.exports = {
 
         // Minify
         let cssMinifyComplete = new Promise((resolve, reject) => {
-          cssMinify.run(resolve, module.exports.targetPath, module.exports.targetSassFile, module.exports.targetCssFile);
+          cssMinify.run(resolve, module.exports.targetCssPath, module.exports.targetSassFile, module.exports.targetCssFile);
         });
 
         cssMinifyComplete.then((successMessage) => {
@@ -40,13 +41,13 @@ module.exports = {
 
       // Js
       let jsConcatComplete = new Promise((resolve, reject) => {
-        jsConcat.run(resolve, module.exports.jsPath, module.exports.targetPath, module.exports.targetJsFile);
+        jsConcat.run(resolve, module.exports.jsPath, module.exports.targetJsPath, module.exports.targetJsFile);
       });
 
       jsConcatComplete.then((successMessage) => {
         console.log(successMessage);
         let jsMinifyComplete = new Promise((resolve, reject) => {
-          jsMinify.run(resolve, module.exports.targetPath, module.exports.targetJsFile, module.exports.targetJsMinFile);
+          jsMinify.run(resolve, module.exports.targetJsPath, module.exports.targetJsFile, module.exports.targetJsMinFile);
         });
 
         jsMinifyComplete.then((successMessage) => {
