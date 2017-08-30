@@ -22,7 +22,7 @@ module.exports = {
               throw err;
             }
           });
-          fs.writeFile(targetPath + '/' + targetSassFile, '/* Compiled SASS */\n' + buf + ";\n" + result.css, (err) => {
+          fs.writeFile(targetPath + '/' + targetSassFile, '/* Compiled SASS */\n' + buf + "\n" + result.css, (err) => {
             if (err) {
               throw err;
             }
