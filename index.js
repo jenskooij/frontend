@@ -19,12 +19,10 @@ module.exports = {
     /*
 	Configuration
  */
-    function init () {
       "use strict";
-
       // Sass
       let sassCompileComplete = new Promise((resolve, reject) => {
-        sass.run(resolve, sassPath, targetPath, targetSassFile);
+        sass.run(resolve, module.exports.sassPath, module.exports.targetPath, module.exports.targetSassFile);
       });
 
       sassCompileComplete.then((successMessage) => {
@@ -32,7 +30,7 @@ module.exports = {
 
         // Minify
         let cssMinifyComplete = new Promise((resolve, reject) => {
-          cssMinify.run(resolve, targetPath, targetSassFile, targetCssFile);
+          cssMinify.run(resolve, module.exports.targetPath, module.exports.targetSassFile, module.exports.targetCssFile);
         });
 
         cssMinifyComplete.then((successMessage) => {
@@ -42,21 +40,18 @@ module.exports = {
 
       // Js
       let jsConcatComplete = new Promise((resolve, reject) => {
-        jsConcat.run(resolve, jsPath, targetPath, targetJsFile);
+        jsConcat.run(resolve, module.exports.jsPath, module.exports.targetPath, module.exports.targetJsFile);
       });
 
       jsConcatComplete.then((successMessage) => {
         console.log(successMessage);
         let jsMinifyComplete = new Promise((resolve, reject) => {
-          jsMinify.run(resolve, targetPath, targetJsFile, targetJsMinFile);
+          jsMinify.run(resolve, module.exports.targetPath, module.exports.targetJsFile, module.exports.targetJsMinFile);
         });
 
         jsMinifyComplete.then((successMessage) => {
           console.log(successMessage);
         });
       });
-
-
-    }
   }
 };
