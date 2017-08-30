@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const UglifyJS = require("uglify-js");
+const colors = require('colors');
 
 module.exports = {
   run: function (resolve, targetPath, targetJsFile, targetJsMinFile) {
@@ -20,7 +21,7 @@ module.exports = {
         if (err) {
           throw err;
         }
-        resolve('[jsMin] Minification done');
+        resolve('[jsMin] ' + colors.cyan('done'));
       });
     });
   }

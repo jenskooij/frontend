@@ -6,6 +6,7 @@ const jshint = require('jshint');
 const colors = require('colors');
 
 module.exports = {
+  success:true,
   run: function (resolve, jsPath, targetPath, targetJsFile) {
     console.log('[jsConcat] start');
 
@@ -67,7 +68,11 @@ module.exports = {
         loop.next();
       }
     }, function () {
-      resolve('[jsConcat] done');
+      if (module.exports.success === false) {
+        resolve(colors.red('[jsConcat] done with errors'));
+      } else {
+        resolve('[jsConcat] ' + colors.cyan('done'));
+      }
     });
   }
 };

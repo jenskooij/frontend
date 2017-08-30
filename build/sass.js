@@ -1,75 +1,29 @@
 "use strict";
-const sync = require('./syncloop');
-const fs = require('fs');
 const sass = require('node-sass');
+const colors = require('colors');
+const fs = require('fs');
 
 module.exports = {
   run: function (resolve, sassPath, targetPath, targetSassFile) {
     "use strict";
 
-    console.log('[SASS] Clearing  target ' + targetSassFile);
-    fs.writeFile(targetPath + '/' + targetSassFile, '/* Compiled Sass */\n', (err) => {
+    console.log("[sass] start");
+
+    sass.render({
+      file: sassPath + "/site.scss",
+    }, function (err, result) {
       if (err) {
-        throw err;
-      }
-      let files = fs.readdirSync(sassPath);
-
-      let resetLine = '@import \'node_modules/reset-css/_reset\';';
-      sass.render({data: resetLine}, function (err, res) {
-        fs.appendFile(targetPath + '/' + targetSassFile, res.css, function (err) {
-          if (err) {
-            throw err;
-          }
-          console.log('[SASS] - Added CSS reset');
-          module.exports.handleOthers(files, resolve, sassPath, targetPath, targetSassFile);
-        });
-      });
-
-    });
-  },
-  handleOthers: function (files, resolve, sassPath, targetPath, targetSassFile) {
-    sync.syncLoop(files.length, function (loop) {
-      let i = loop.iteration();
-      console.log('[SASS] Handling ' + files[i]);
-
-      let filename = sassPath + '/' + files[i];
-
-      if (fs.lstatSync(filename).isDirectory()) {
-        let subfiles = fs.readdirSync(filename);
-        module.exports.handleOthers(subfiles, resolve, filename, targetPath, targetSassFile);
-        loop.next();
+        console.log(colors.red("[sass] " + err));
       } else {
-        let buf = fs.readFileSync(sassPath + '/' + files[i], "utf8", function (err) {
+        fs.writeFile(targetPath + '/' + targetSassFile, '/* Compiled SASS */\n' + result.css, (err) => {
           if (err) {
             throw err;
           }
-        });
-        console.log('[SASS] - Read ' + filename);
-
-        sass.render({
-          data: buf,
-          includePaths: [ 'scss/**' ]
-        }, function (err, res) {
-          if (err) {
-            console.log('Error in file ' + sassPath + '/' + files[i]);
-            throw err;
-          }
-          console.log('[SASS] - Compiled ' + files[i]);
-          fs.appendFile(targetPath + '/' + targetSassFile, res.css, function (err) {
-            if (err) {
-              throw err;
-            }
-            loop.next();
-          });
-
+          resolve('[sass] ' + colors.cyan('done'));
         });
       }
-
-    }, function () {
-      resolve('[SASS] done');
     });
-  },
-  handleDir (files, resolve, sassPath, targetPath, targetSassFile) {
+
 
   }
 };
