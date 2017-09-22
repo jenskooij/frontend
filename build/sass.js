@@ -17,7 +17,7 @@ module.exports = {
       } else {
         if (resetCss === true) {
           console.log('[sass] Adding css reset');
-          let buf = fs.readFileSync('node_modules/cloud-control-frontend/node_modules/reset-css/reset.css', "utf8", function (err) {
+          let buf = fs.readFileSync('node_modules/reset-css/reset.css', "utf8", function (err) {
             if (err) {
               throw err;
             }
