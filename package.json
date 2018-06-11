@@ -1,6 +1,6 @@
 {
   "name": "cloud-control-frontend",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A boilerplate frontend",
   "main": "index.js",
   "scripts": {
@@ -24,12 +24,12 @@
   "homepage": "https://github.com/jenskooij/frontend#readme",
   "dependencies": {
     "node-sass": "^4",
-    "file-system": "^2.2.2",
-    "clean-css": "^4.1.5",
-    "reset-css": "^2.2.1",
-    "nodemon": "^1.11.0",
-    "uglify-js": "^3.0",
-    "jshint": "^2.9",
-    "colors": "^1.1"
+    "file-system": "^2",
+    "clean-css": "^4",
+    "reset-css": "^4",
+    "nodemon": "^1",
+    "uglify-js": "^3",
+    "jshint": "^2",
+    "colors": "^1"
   }
 }
