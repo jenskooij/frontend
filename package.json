@@ -27,7 +27,7 @@
     "file-system": "^2",
     "clean-css": "^4",
     "reset-css": "^4",
-    "nodemon": "^1",
+    "nodemon": "^2.0.3",
     "uglify-js": "^3",
     "jshint": "^2",
     "colors": "^1"
