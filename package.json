@@ -4,7 +4,9 @@
   "description": "A boilerplate frontend",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch scss --watch js --watch build -e js,scss index.js"
+    "start": "nodemon --watch scss --watch js --watch build -e js,scss index.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,8 @@
     "nodemon": "^1",
     "uglify-js": "^3",
     "jshint": "^2",
-    "colors": "^1"
-  }
+    "colors": "^1",
+    "snyk": "^1.317.0"
+  },
+  "snyk": true
 }
