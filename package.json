@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/jenskooij/frontend#readme",
   "dependencies": {
-    "node-sass": "^4",
+    "node-sass": "^4.14.1",
     "file-system": "^2",
     "clean-css": "^4",
     "reset-css": "^4",
