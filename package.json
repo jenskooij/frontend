@@ -28,7 +28,7 @@
     "clean-css": "^4",
     "reset-css": "^4",
     "nodemon": "^1",
-    "uglify-js": "^3",
+    "uglify-js": "^3.14.3",
     "jshint": "^2",
     "colors": "^1"
   }
