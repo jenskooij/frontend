@@ -29,7 +29,7 @@
     "reset-css": "^4",
     "nodemon": "^1",
     "uglify-js": "^3",
-    "jshint": "^2",
+    "jshint": "^2.9.7",
     "colors": "^1"
   }
 }
