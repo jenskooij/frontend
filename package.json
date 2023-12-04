@@ -23,13 +23,13 @@
   },
   "homepage": "https://github.com/jenskooij/frontend#readme",
   "dependencies": {
-    "node-sass": "^4",
+    "node-sass": "^7.0.2",
     "file-system": "^2",
     "clean-css": "^4",
     "reset-css": "^4",
-    "nodemon": "^1",
+    "nodemon": "^2.0.0",
     "uglify-js": "^3",
-    "jshint": "^2",
+    "jshint": "^2.9.7",
     "colors": "^1"
   }
 }
